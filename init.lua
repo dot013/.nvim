@@ -1,6 +1,9 @@
 vim.g.mapleader = ' ';
 vim.g.maplocalleader = ' ';
 
+vim.g.loaded_netrw = 1;
+vim.g.loaded_netrwPlugin = 1;
+
 local lazypath = vim.fn.stdpath('data') .. '/lazy/lazy.nvim';
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
@@ -16,8 +19,14 @@ vim.opt.rtp:prepend(lazypath);
 
 require('lazy').setup('plugins');
 
+-- Custom keybindings
+require('keybindings');
+
 vim.wo.number = true;
 vim.o.mouse = true;
+
+-- True colors
+vim.o.termguicolors = true;
 
 -- Set relative line numbers
 vim.o.number = true;
@@ -25,10 +34,11 @@ vim.o.relativenumber = true;
 vim.o.signcolumn = 'number';
 
 -- Set indentation
+vim.o.noexpandtab = true;
 vim.o.tabstop = 4;
 vim.o.softtabstop = 4;
 vim.o.shiftwidth = 4;
-vim.o.expandtab = 4;
+-- vim.o.expandtab = 4;
 vim.o.breakindent = true;
 
 -- Scrolloff
