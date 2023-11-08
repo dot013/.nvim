@@ -1,4 +1,6 @@
--- Move when highlithed
+-- Thank you ThePrimeagen ---------------
+
+-- Move when highlighted
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv");
 vim.keymap.set('v', 'K', ":m '<-2<CR>gv=gv");
 
@@ -23,7 +25,19 @@ vim.keymap.set('v', '<leader>d', '\"_d');
 -- Replace current word in entire file
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 
--- Turn file into a linux executable
+-- Turn file into a Linux executable
 vim.keymap.set('n', '<leader>x', '<cmd>!chmod +x %<CR>', { silent = true });
 
--- Thank you ThePrimeagen
+-- --------------------------------------
+
+vim.keymap.set('n', '<leader>w\\', '<cmd>:split<cr>', { desc = '[w\\] Splits the window horizontally' });
+vim.keymap.set('n', '<leader>w/', '<cmd>:vsplit<cr>', { desc = '[w/] Splits the window vertically' });
+
+vim.keymap.set('n', 's=', 'z=', { desc = '[s=] Suggest spelling correction' });
+vim.keymap.set('n', '<leader>st', function()
+	if vim.o.spell then
+		vim.o.spell = false;
+	else
+		vim.o.spell = true;
+	end
+end, { desc = '[st] Toggle spelling correction' });
