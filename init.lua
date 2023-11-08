@@ -28,6 +28,9 @@ vim.o.mouse = true;
 -- True colors
 vim.o.termguicolors = true;
 
+-- Enable spell checking by default
+vim.o.spell = true;
+
 -- Set relative line numbers
 vim.o.number = true;
 vim.o.relativenumber = true;
@@ -41,13 +44,13 @@ vim.o.shiftwidth = 4;
 -- vim.o.expandtab = 4;
 vim.o.breakindent = true;
 
--- Scrolloff
+-- Scroll off
 vim.o.scrolloff = 10;
 
--- Line lenght column
+-- Line length column
 vim.o.colorcolumn = '80';
 
--- Sync neovim and OS clipboards
+-- Sync NeoVim and OS clipboards
 vim.o.clipboard = 'unnamedplus';
 
 -- Highlight search
