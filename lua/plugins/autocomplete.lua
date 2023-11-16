@@ -15,6 +15,7 @@ return { {
 	},
 	config = function()
 		vim.api.nvim_set_hl(0, 'CmpGhostText', { link = 'Comment', default = true });
+		vim.o.pumheight = 20;
 
 		local cmp = require('cmp');
 		local cmp_defaults = require('cmp.config.default')();
