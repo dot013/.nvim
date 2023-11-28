@@ -107,6 +107,9 @@ return { {
 					telemetry = { enable = false },
 				}
 			},
+			html = {
+				filetypes = { 'html', 'svg', 'xml' },
+			},
 		};
 
 		-- Neovim lua configuraion
