@@ -25,6 +25,13 @@ require('keybindings');
 vim.wo.number = true;
 vim.o.mouse = true;
 
+-- Auto reload
+vim.o.autoread = true;
+vim.api.nvim_create_autocmd({ 'BufEnter', 'CursorHold', 'CursorHoldI', 'Focusgained' }, {
+	command = "if mode() != 'c' | checktime | endif",
+	pattern = { '*' },
+});
+
 -- True colors
 vim.o.termguicolors = true;
 
