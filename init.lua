@@ -24,16 +24,19 @@ require('keybindings');
 
 vim.wo.number = true;
 vim.o.mouse = true;
-
+--[[
 -- Auto reload
 vim.o.autoread = true;
 vim.api.nvim_create_autocmd({ 'BufEnter', 'CursorHold', 'CursorHoldI', 'Focusgained' }, {
 	command = "if mode() != 'c' | checktime | endif",
 	pattern = { '*' },
 });
-
+ ]]
 -- True colors
 vim.o.termguicolors = true;
+
+-- Enable filetype plugins
+vim.o.filetype = true;
 
 -- Enable spell checking by default
 vim.o.spell = true;
@@ -93,3 +96,13 @@ vim.api.nvim_create_autocmd('TextYankPost', {
 	group = highlight_group,
 	pattern = '*',
 });
+
+-- Vimtex config
+vim.g['vimtex_compiler_progname'] = 'nvr';
+vim.g['vimtex_view_method'] = 'zathura';
+vim.g['vimtex_log_ignore'] = {
+	'Underfull',
+	'Overfull',
+	'specifier changed to',
+	'Token not allowed in a PDF string',
+}
