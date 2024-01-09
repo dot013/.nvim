@@ -4,4 +4,5 @@ return {
 	'tpope/vim-rhubarb',
 	'tpope/vim-sleuth',
 	'folke/which-key.nvim',
+	'lambdalisue/suda.vim',
 };
