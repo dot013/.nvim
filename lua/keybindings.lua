@@ -41,3 +41,5 @@ vim.keymap.set('n', '<leader>st', function()
 		vim.o.spell = true;
 	end
 end, { desc = '[st] Toggle spelling correction' });
+
+vim.keymap.set('n', '<leader>ee', vim.diagnostic.open_float, { desc = '[ee] Open diagnostic' });
