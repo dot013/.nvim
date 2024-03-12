@@ -43,3 +43,10 @@ vim.keymap.set('n', '<leader>st', function()
 end, { desc = '[st] Toggle spelling correction' });
 
 vim.keymap.set('n', '<leader>ee', vim.diagnostic.open_float, { desc = '[ee] Open diagnostic' });
+
+vim.keymap.set({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true });
+
+-- Remap for dealing with word wrap
+vim.keymap.set('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true });
+vim.keymap.set('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true });
+
