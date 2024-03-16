@@ -96,6 +96,26 @@ return {
 		lazy = false,
 	},
 	{
+		'nvim-telescope/telescope.nvim',
+		branch = '0.1.x',
+		dependencies = {
+			'nvim-lua/plenary.nvim',
+			{
+				'nvim-telescope/telescope-fnf-native.nvim',
+				build = 'make',
+				cond = function()
+					return vim.fn.executable('make') == 1
+				end
+			},
+		},
+	},
+	-- Do no why I can't clone it via lazy.nvim
+	--[[ {
+		'ThePrimeagen/harpoon',
+		branch = 'harpoon2',
+		dependencies = { 'nvim-lua/plenary.nvim', },
+	}, ]]
+	{
 		'stevearc/conform.nvim',
 		opts = {
 			formatters_by_ft = {
@@ -118,20 +138,6 @@ return {
 			mappings = {
 				basic = true,
 				extra = true,
-			},
-		},
-	},
-	{
-		'nvim-telescope/telescope.nvim',
-		branch = '0.1.x',
-		dependencies = {
-			'nvim-lua/plenary.nvim',
-			{
-				'nvim-telescope/telescope-fnf-native.nvim',
-				build = 'make',
-				cond = function()
-					return vim.fn.executable('make') == 1
-				end
 			},
 		},
 	},
