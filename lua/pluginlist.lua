@@ -116,6 +116,16 @@ return {
 		dependencies = { 'nvim-lua/plenary.nvim', },
 	}, ]]
 	{
+		'romgrk/barbar.nvim',
+		dependencies = {
+			'lewis6991/gitsigns.nvim',
+			'nvim-tree/nvim-web-devicons',
+		},
+		init = function() vim.g.barbar_auto_setup = false end,
+		opts = {},
+		lazy = false,
+	},
+	{
 		'stevearc/conform.nvim',
 		opts = {
 			formatters_by_ft = {

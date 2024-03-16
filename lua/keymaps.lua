@@ -34,7 +34,7 @@ map("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- Turn file into a Linux executable
 map('n', '<leader>x', '<cmd>!chmod +x %<CR>', { silent = true });
 
--- Harpoon -------------------------------
+-- Harpoon ------------------------------
 
 -- local harpoon = require('harpoon');
 -- harpoon:setup();
@@ -62,3 +62,8 @@ map({ 'n', 'v' }, '<Space>', '<Nop>', { silent = true });
 -- Remap for dealing with word wrap
 map('n', 'k', "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true });
 map('n', 'j', "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true });
+
+-- Barbar -------------------------------
+
+map('n', 'wc', '<cmd>BufferClose<cr>', { desc = 'Buffer close', noremap = true, silent = true });
+map('n', 'wA', '<cmd>BufferCloseAllButCurrent<cr>', { desc = 'Buffer close all', noremap = true, silent = true });
