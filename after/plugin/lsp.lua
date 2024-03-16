@@ -12,7 +12,7 @@ local on_attach = function(_, bufnr)
 	bmap('gI', vim.lsp.buf.implementation, 'Goto Implementation');
 	bmap('<leader>D', vim.lsp.buf.type_definition, 'Type Definition');
 
-	bmap('K', vim.lsp.buf.hover, 'Hover docs');
+	-- bmap('K', vim.lsp.buf.hover, 'Hover docs');
 	bmap('<C-k>', vim.lsp.buf.signature_help, 'Signature docs');
 
 	vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
@@ -35,6 +35,26 @@ require('which-key').register({
 	['<leader>s'] = { name = '[s] Search', _ = 'which_key_ignore' },
 	['<leader>w'] = { name = '[w] Workspace', _ = 'which_key_ignore' },
 });
+
+require('hover').setup({
+	init = function()
+		require('hover.providers.lsp');
+	end,
+	preview_opts = {
+		border = 'single',
+	},
+	preview_window = false,
+	title = true,
+	mouse_providers = { 'LSP', },
+	mouse_delay = 1000,
+});
+
+vim.keymap.set('n', 'K', require('hover').hover, { desc = '[K] Hover' });
+vim.keymap.set('n', 'sK', require('hover').hover_select, { desc = '[K] Hover select' });
+
+-- Mouse support
+vim.keymap.set('n', '<MouseMove>', require('hover').hover_mouse, { desc = '[MouseMove] Hover mouse' });
+vim.o.mousemoveevent = true;
 
 local capabilities = vim.lsp.protocol.make_client_capabilities();
 capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities);

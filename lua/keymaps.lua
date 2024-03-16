@@ -33,6 +33,8 @@ vim.keymap.set('n', '<leader>x', '<cmd>!chmod +x %<CR>', { silent = true });
 vim.keymap.set('n', '<leader>w\\', '<cmd>:vsplit<cr>', { desc = '[w\\] Splits the window vertically' });
 vim.keymap.set('n', '<leader>w/', '<cmd>:split<cr>', { desc = '[w/] Splits the window horizontally' });
 
+vim.keymap.set('n', '<leader>e', '<cmd>:Ex<cr>', { desc = '[e] Explorer' });
+
 vim.keymap.set('n', 's=', 'z=', { desc = '[s=] Suggest spelling correction' });
 vim.keymap.set('n', '<leader>st', function()
 	if vim.o.spell then
