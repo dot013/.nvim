@@ -7,7 +7,7 @@ local nmap = function(key, func, desc)
 end
 
 nmap('<leader><space>', builtin.buffers, 'Find existing buffers');
-nmap('/', function ()
+nmap('/', function()
 	builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown({
 		windblend = 10,
 		previewer = false,
@@ -23,4 +23,3 @@ nmap('rs', builtin.resume, 'Resume search');
 telescope.setup({});
 
 pcall(require('telescope').load_extensions, 'fnf');
-

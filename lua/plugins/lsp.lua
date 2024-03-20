@@ -79,7 +79,7 @@ return { {
 			nmap('<leader>td', require('telescope.builtin').lsp_type_definitions, '[td] Type Definition');
 
 			nmap('K', vim.lsp.buf.hover, 'Hover docs');
-			nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature docs');
+			nmap('<C-s>', vim.lsp.buf.signature_help, 'Signature docs');
 
 			vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
 				vim.lsp.buf.format()

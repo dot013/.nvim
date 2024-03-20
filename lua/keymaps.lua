@@ -36,8 +36,19 @@ map('n', '<leader>x', '<cmd>!chmod +x %<CR>', { silent = true });
 
 -- Harpoon ------------------------------
 
--- local harpoon = require('harpoon');
--- harpoon:setup();
+local harpoon = require('harpoon');
+harpoon:setup();
+
+map('n', '<leader>w', function() harpoon:list():append() end, { desc = '[Harpoon] Append to list' });
+map('n', '<C-e>', function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, { desc = '[Harpoon] Open quick menu' });
+
+map('n', '1', function() harpoon:list():select(1) end, { desc = '[Harpoon] Jump to item 1' });
+map('n', '2', function() harpoon:list():select(2) end, { desc = '[Harpoon] Jump to item 2' });
+map('n', '3', function() harpoon:list():select(3) end, { desc = '[Harpoon] Jump to item 3' });
+map('n', '4', function() harpoon:list():select(4) end, { desc = '[Harpoon] Jump to item 4' });
+
+map('n', '<C-h>', function() harpoon:list():prev() end, { desc = '[Harpoon] Jump to previous item' });
+map('n', '<C-l>', function() harpoon:list():next() end, { desc = '[Harpoon] Jump to next item' });
 
 -- --------------------------------------
 

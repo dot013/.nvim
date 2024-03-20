@@ -110,11 +110,11 @@ return {
 		},
 	},
 	-- Do no why I can't clone it via lazy.nvim
-	--[[ {
-		'ThePrimeagen/harpoon',
-		branch = 'harpoon2',
+	{
+		name = 'harpoon',
 		dependencies = { 'nvim-lua/plenary.nvim', },
-	}, ]]
+		dir = '/home/guz/.config/nvim/plugins/harpoon',
+	},
 	{
 		'romgrk/barbar.nvim',
 		dependencies = {

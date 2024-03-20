@@ -1,0 +1,4 @@
+[submodule "plugins/harpoon"]
+	path = plugins/harpoon
+	url = https://github.com/ThePrimeagen/harpoon
+	branch = harpoon2
