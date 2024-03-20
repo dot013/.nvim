@@ -47,8 +47,8 @@ map('n', '2', function() harpoon:list():select(2) end, { desc = '[Harpoon] Jump 
 map('n', '3', function() harpoon:list():select(3) end, { desc = '[Harpoon] Jump to item 3' });
 map('n', '4', function() harpoon:list():select(4) end, { desc = '[Harpoon] Jump to item 4' });
 
-map('n', '<C-h>', function() harpoon:list():prev() end, { desc = '[Harpoon] Jump to previous item' });
-map('n', '<C-l>', function() harpoon:list():next() end, { desc = '[Harpoon] Jump to next item' });
+map('n', '<C-p>', function() harpoon:list():prev() end, { desc = '[Harpoon] Jump to previous item' });
+map('n', '<C-n>', function() harpoon:list():next() end, { desc = '[Harpoon] Jump to next item' });
 
 -- --------------------------------------
 
