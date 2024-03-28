@@ -115,9 +115,12 @@ return {
 	},
 	-- Do no why I can't clone it via lazy.nvim
 	{
-		name = "harpoon",
-		dependencies = { "nvim-lua/plenary.nvim" },
-		dir = "/home/guz/.config/nvim/plugins/harpoon",
+		name = 'harpoon',
+		dir = '/home/guz/.config/nvim/plugins/harpoon',
+		dependencies = {
+			'nvim-telescope/telescope.nvim',
+			'nvim-lua/plenary.nvim',
+		},
 	},
 	{
 		"romgrk/barbar.nvim",
@@ -197,8 +200,15 @@ return {
 	{
 		"okuuva/auto-save.nvim",
 		lazy = false,
-		event = { "InsertLeave", "TextChanged" },
-		opts = {},
+		event = { 'InsertLeave', 'TextChanged' },
+		opts = {
+			condition = function(buf)
+				if vim.bo[buf].filetype == "harpoon" then
+					return false;
+				end
+				return true;
+			end,
+		},
 	},
 	{ "mhartington/formatter.nvim" },
 	{ "tpope/vim-fugitive" },
