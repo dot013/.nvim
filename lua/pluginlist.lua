@@ -196,6 +196,7 @@ return {
 		event = { 'InsertLeave', 'TextChanged', },
 		opts = {},
 	},
+	{ 'mhartington/formatter.nvim' },
 	{ 'tpope/vim-fugitive', },
 	{ 'tpope/vim-rhubarb', },
 	{

@@ -15,15 +15,15 @@ local on_attach = function(_, bufnr)
 	-- bmap('K', vim.lsp.buf.hover, 'Hover docs');
 	bmap('<C-k>', vim.lsp.buf.signature_help, 'Signature docs');
 
-	vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
-		vim.lsp.buf.format()
-	end, {});
+	-- vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
+	-- vim.lsp.buf.format()
+	-- end, {});
 
-	local format_is_enabled = true;
-	vim.api.nvim_buf_create_user_command('AutoFormatToggle', function()
-		format_is_enabled = not format_is_enabled;
-		print('Setting autoformatting to:' .. tostring(format_is_enabled));
-	end, {});
+	-- local format_is_enabled = true;
+	-- vim.api.nvim_buf_create_user_command('AutoFormatToggle', function()
+	-- format_is_enabled = not format_is_enabled;
+	-- print('Setting autoformatting to:' .. tostring(format_is_enabled));
+	-- end, {});
 end
 
 require('which-key').register({
@@ -86,3 +86,38 @@ require('mason-lspconfig').setup_handlers({
 		});
 	end
 });
+
+local formatter_util = require("formatter.util")
+vim.api.nvim_create_augroup("__formatter__", { clear = true })
+vim.api.nvim_create_autocmd("BufWritePost", {
+	group = "__formatter__",
+	command = ":FormatWrite",
+})
+require("formatter").setup({
+	logging = true,
+	log_level = vim.log.levels.WARN,
+	filetype = {
+		lua = {
+			require("formatter.filetypes.lua").stylua,
+			function()
+				return {
+					exe = "stylua",
+					args = {
+						"--search-parent-directories",
+						"--stdin-filepath",
+						formatter_util.escape_path(formatter_util.get_current_buffer_file_path()),
+						"--",
+						"-",
+					},
+					stdin = true,
+				}
+			end,
+		},
+		nix = {
+			require("formatter.filetypes.nix").alejandra,
+		},
+		["*"] = {
+			require("formatter.filetypes.any").remove_trailing_whitespace,
+		},
+	},
+})
