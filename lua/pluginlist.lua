@@ -1,143 +1,149 @@
 return {
 	{
-		'catppuccin/nvim',
-		name = 'catppuccin',
+		"catppuccin/nvim",
+		name = "catppuccin",
 		priority = 1000,
 		config = function()
-			require('catppuccin').setup({
-				flavour = 'mocha',
+			require("catppuccin").setup({
+				flavour = "mocha",
 				transparent_background = true,
-			});
-			vim.cmd.colorscheme('catppuccin');
+			})
+			vim.cmd.colorscheme("catppuccin")
 		end,
 	},
 	{
-		'nvim-lualine/lualine.nvim',
+		"nvim-lualine/lualine.nvim",
 		opts = {
 			options = {
 				icons_enabled = false,
-				theme = 'catppuccin',
-				component_separators = '|',
-				section_separators = '',
+				theme = "catppuccin",
+				component_separators = "|",
+				section_separators = "",
 			},
 		},
 	},
 	{
-		'lukas-reineke/indent-blankline.nvim',
-		main = 'ibl',
+		"lukas-reineke/indent-blankline.nvim",
+		main = "ibl",
 		opts = {},
 	},
 	{
-		'lewis6991/gitsigns.nvim',
+		"lewis6991/gitsigns.nvim",
 		opts = {
 			signs = {
-				add = { text = '+' },
-				change = { text = '~' },
-				delete = { text = '+' },
-				topdelete = { text = '-' },
-				changedelete = { text = '~' },
+				add = { text = "+" },
+				change = { text = "~" },
+				delete = { text = "+" },
+				topdelete = { text = "-" },
+				changedelete = { text = "~" },
 			},
 			on_attach = function(bufnr)
-				vim.keymap.set('n', '<leader>hp', require('gitsigns').preview_hunk,
-					{ buffer = bufnr, desc = 'Preview git hunk' });
-				local gs = package.loaded.gitsigns;
-				vim.keymap.set({ 'n', 'v' }, ']c', function()
+				vim.keymap.set(
+					"n",
+					"<leader>hp",
+					require("gitsigns").preview_hunk,
+					{ buffer = bufnr, desc = "Preview git hunk" }
+				)
+				local gs = package.loaded.gitsigns
+				vim.keymap.set({ "n", "v" }, "]c", function()
 					if vim.wo.diff then
-						return ']c';
+						return "]c"
 					end
 					vim.schedule(function()
 						gs.next_hunk()
-					end);
-					return '<Ignore>';
-				end, { expr = true, buffer = bufnr, desc = 'Jump to next hunk' });
-				vim.keymap.set({ 'n', 'v' }, '[c', function()
+					end)
+					return "<Ignore>"
+				end, { expr = true, buffer = bufnr, desc = "Jump to next hunk" })
+				vim.keymap.set({ "n", "v" }, "[c", function()
 					if vim.wo.diff then
-						return '[c';
+						return "[c"
 					end
 					vim.schedule(function()
 						gs.next_hunk()
-					end);
-					return '<Ignore>';
-				end, { expr = true, buffer = bufnr, desc = 'Jump to previous hunk' });
+					end)
+					return "<Ignore>"
+				end, { expr = true, buffer = bufnr, desc = "Jump to previous hunk" })
 			end,
 		},
 	},
 	{
-		'nvim-treesitter/nvim-treesitter',
+		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
-			'nvim-treesitter/nvim-treesitter-textobjects',
-			'nvim-treesitter/playground',
+			"nvim-treesitter/nvim-treesitter-textobjects",
+			"nvim-treesitter/playground",
 		},
-		build = ':TSUpdate',
+		build = ":TSUpdate",
 	},
-	{ 'j-hui/fidget.nvim', },
-	{ "williamboman/mason.nvim", },
-	{ "williamboman/mason-lspconfig.nvim", },
-	{ "neovim/nvim-lspconfig", },
-	{ 'folke/which-key.nvim', },
-	{ 'lewis6991/hover.nvim', },
-	{ 'folke/neodev.nvim', },
-	{ 'nvim-tree/nvim-web-devicons', },
+	{ "j-hui/fidget.nvim" },
+	{ "williamboman/mason.nvim" },
+	{ "williamboman/mason-lspconfig.nvim" },
+	{ "neovim/nvim-lspconfig" },
+	{ "folke/which-key.nvim" },
+	{ "lewis6991/hover.nvim" },
+	{ "folke/neodev.nvim" },
+	{ "nvim-tree/nvim-web-devicons" },
 	{
-		'hrsh7th/nvim-cmp',
+		"hrsh7th/nvim-cmp",
 		dependencies = {
-			'L3MON4D3/LuaSnip',
-			'saadparwaiz1/cmp_luasnip',
-			'rafamadriz/friendly-snippets',
-			'hrsh7th/cmp-nvim-lsp',
-			'onsails/lspkind.nvim',
+			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip",
+			"rafamadriz/friendly-snippets",
+			"hrsh7th/cmp-nvim-lsp",
+			"onsails/lspkind.nvim",
 		},
 	},
-	{ 'tpope/vim-sleuth', },
+	{ "tpope/vim-sleuth" },
 	{
-		'folke/trouble.nvim',
-		dependencies = { 'nvim-tree/nvim-web-devicons', },
+		"folke/trouble.nvim",
+		dependencies = { "nvim-tree/nvim-web-devicons" },
 		opts = {},
 		lazy = false,
 	},
 	{
-		'nvim-telescope/telescope.nvim',
-		branch = '0.1.x',
+		"nvim-telescope/telescope.nvim",
+		branch = "0.1.x",
 		dependencies = {
-			'nvim-lua/plenary.nvim',
+			"nvim-lua/plenary.nvim",
 			{
-				'nvim-telescope/telescope-fnf-native.nvim',
-				build = 'make',
+				"nvim-telescope/telescope-fnf-native.nvim",
+				build = "make",
 				cond = function()
-					return vim.fn.executable('make') == 1
-				end
+					return vim.fn.executable("make") == 1
+				end,
 			},
 		},
 	},
 	-- Do no why I can't clone it via lazy.nvim
 	{
-		name = 'harpoon',
-		dependencies = { 'nvim-lua/plenary.nvim', },
-		dir = '/home/guz/.config/nvim/plugins/harpoon',
+		name = "harpoon",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		dir = "/home/guz/.config/nvim/plugins/harpoon",
 	},
 	{
-		'romgrk/barbar.nvim',
+		"romgrk/barbar.nvim",
 		dependencies = {
-			'lewis6991/gitsigns.nvim',
-			'nvim-tree/nvim-web-devicons',
+			"lewis6991/gitsigns.nvim",
+			"nvim-tree/nvim-web-devicons",
 		},
-		init = function() vim.g.barbar_auto_setup = false end,
+		init = function()
+			vim.g.barbar_auto_setup = false
+		end,
 		opts = {},
 		lazy = false,
 	},
 	{
-		'nvim-neo-tree/neo-tree.nvim',
+		"nvim-neo-tree/neo-tree.nvim",
 		dependencies = {
-			'nvim-lua/plenary.nvim',
-			'nvim-tree/nvim-web-devicons',
-			'MunifTanjim/nui.nvim',
-			'3rd/image.nvim',
+			"nvim-lua/plenary.nvim",
+			"nvim-tree/nvim-web-devicons",
+			"MunifTanjim/nui.nvim",
+			"3rd/image.nvim",
 		},
 		lazy = false,
 		opts = {
 			closes_if_last_window = true,
 			window = {
-				position = 'left',
+				position = "left",
 				width = 30,
 				mappings = {},
 			},
@@ -146,13 +152,12 @@ return {
 					visible = true,
 					hide_dotfiles = false,
 					hide_gitignored = false,
-					hide_by_name = {
-					},
+					hide_by_name = {},
 					never_show = {
-						'.DS_Store',
+						".DS_Store",
 					},
 				},
-				hijack_netrw_behavior = 'disabled',
+				hijack_netrw_behavior = "disabled",
 				follow_current_file = {
 					enabled = true,
 				},
@@ -160,15 +165,14 @@ return {
 			},
 		},
 		keys = {
-			{ '<leader>Ex', '<cmd>Neotree toggle<cr>', desc = '[Ex] Toggle explorer' },
+			{ "<leader>Ex", "<cmd>Neotree toggle<cr>", desc = "[Ex] Toggle explorer" },
 		},
-
 	},
 	{
-		'stevearc/conform.nvim',
+		"stevearc/conform.nvim",
 		opts = {
 			formatters_by_ft = {
-				nix = { 'nixpkgs_fmt' },
+				nix = { "nixpkgs_fmt" },
 			},
 			format_on_save = {
 				timeout_ms = 1000,
@@ -177,12 +181,12 @@ return {
 		},
 	},
 	{
-		'numToStr/Comment.nvim',
+		"numToStr/Comment.nvim",
 		opts = {
 			extra = {
-				above = 'gc0',
-				below = 'gco',
-				eol = 'gcA',
+				above = "gc0",
+				below = "gco",
+				eol = "gcA",
 			},
 			mappings = {
 				basic = true,
@@ -191,22 +195,22 @@ return {
 		},
 	},
 	{
-		'okuuva/auto-save.nvim',
+		"okuuva/auto-save.nvim",
 		lazy = false,
-		event = { 'InsertLeave', 'TextChanged', },
+		event = { "InsertLeave", "TextChanged" },
 		opts = {},
 	},
-	{ 'mhartington/formatter.nvim' },
-	{ 'tpope/vim-fugitive', },
-	{ 'tpope/vim-rhubarb', },
+	{ "mhartington/formatter.nvim" },
+	{ "tpope/vim-fugitive" },
+	{ "tpope/vim-rhubarb" },
 	{
-		'kdheepak/lazygit.nvim',
-		dependencies = { 'nvim-lua/plenary.nvim', },
-		keys = { { '<leader>gg', '<cmd>:LazyGit<cr>', desc = '[gg] Lazygit', } },
+		"kdheepak/lazygit.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+		keys = { { "<leader>gg", "<cmd>:LazyGit<cr>", desc = "[gg] Lazygit" } },
 	},
-	{ 'lambdalisue/suda.vim', },
+	{ "lambdalisue/suda.vim" },
 	{
-		'aserowy/tmux.nvim',
+		"aserowy/tmux.nvim",
 		config = true,
 	},
-};
+}

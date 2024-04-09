@@ -1,7 +1,7 @@
-vim.g.mapleader = ' ';
-vim.g.maplocalleader = ' ';
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
-require('options');
+require("options")
 
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
@@ -15,19 +15,19 @@ if not vim.loop.fs_stat(lazypath) then
 	})
 end
 
-vim.opt.rtp:prepend(lazypath);
+vim.opt.rtp:prepend(lazypath)
 
-require('lazy').setup('pluginlist');
+require("lazy").setup("pluginlist")
 
 -- Custom keybindings
-require('keymaps');
+require("keymaps")
 
 -- Highlight on yank
-local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true });
-vim.api.nvim_create_autocmd('TextYankPost', {
+local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+vim.api.nvim_create_autocmd("TextYankPost", {
 	callback = function()
-		vim.highlight.on_yank();
+		vim.highlight.on_yank()
 	end,
 	group = highlight_group,
-	pattern = '*',
-});
+	pattern = "*",
+})
