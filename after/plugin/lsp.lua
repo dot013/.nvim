@@ -118,6 +118,23 @@ require("formatter").setup({
 		nix = {
 			require("formatter.filetypes.nix").alejandra,
 		},
+		sh = {
+			function()
+				if vim.fn.executable("shfmt") == 1 then
+					return require("formatter.filetypes.sh").shfmt()
+				end
+				return nil
+			end,
+			function()
+				if vim.fn.executable("shellharden") == 1 then
+					return {
+						exe = "shellharden",
+						args = { "--replace" },
+					}
+				end
+				return nil
+			end,
+		},
 		["*"] = {
 			require("formatter.filetypes.any").remove_trailing_whitespace,
 		},
