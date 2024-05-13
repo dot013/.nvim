@@ -241,4 +241,7 @@ return {
 		"aserowy/tmux.nvim",
 		config = true,
 	},
+	{
+		"laytan/cloak.nvim",
+	},
 }
