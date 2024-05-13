@@ -74,6 +74,24 @@ return {
 		},
 		build = ":TSUpdate",
 	},
+	{
+		"windwp/nvim-ts-autotag",
+		config = function()
+			require("nvim-ts-autotag").setup()
+		end,
+	},
+	{
+		"toppair/peek.nvim",
+		event = { "VeryLazy" },
+		build = "deno task --quiet build:fast",
+		config = function()
+			require("peek").setup({
+				app = "browser",
+			})
+			vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
+			vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
+		end,
+	},
 	{ "j-hui/fidget.nvim" },
 	{ "williamboman/mason.nvim" },
 	{ "williamboman/mason-lspconfig.nvim" },
@@ -115,11 +133,11 @@ return {
 	},
 	-- Do no why I can't clone it via lazy.nvim
 	{
-		name = 'harpoon',
-		dir = '/home/guz/.config/nvim/plugins/harpoon',
+		name = "harpoon",
+		dir = "/home/guz/.config/nvim/plugins/harpoon",
 		dependencies = {
-			'nvim-telescope/telescope.nvim',
-			'nvim-lua/plenary.nvim',
+			"nvim-telescope/telescope.nvim",
+			"nvim-lua/plenary.nvim",
 		},
 	},
 	{
@@ -200,13 +218,13 @@ return {
 	{
 		"okuuva/auto-save.nvim",
 		lazy = false,
-		event = { 'InsertLeave', 'TextChanged' },
+		event = { "InsertLeave", "TextChanged" },
 		opts = {
 			condition = function(buf)
 				if vim.bo[buf].filetype == "harpoon" then
-					return false;
+					return false
 				end
-				return true;
+				return true
 			end,
 		},
 	},
