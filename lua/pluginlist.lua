@@ -244,4 +244,7 @@ return {
 	{
 		"laytan/cloak.nvim",
 	},
+	{
+		"lervag/vimtex"
+	},
 }
