@@ -232,6 +232,10 @@ return {
 	{ "tpope/vim-fugitive" },
 	{ "tpope/vim-rhubarb" },
 	{
+		"tpope/vim-obsession",
+		lazy = false,
+	},
+	{
 		"kdheepak/lazygit.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
 		keys = { { "<leader>gg", "<cmd>:LazyGit<cr>", desc = "[gg] Lazygit" } },
@@ -245,6 +249,6 @@ return {
 		"laytan/cloak.nvim",
 	},
 	{
-		"lervag/vimtex"
+		"lervag/vimtex",
 	},
 }

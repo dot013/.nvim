@@ -1,6 +1,6 @@
-require('nvim-treesitter.install').prefer_git = true;
-require('nvim-treesitter.configs').setup({
-	ensure_installed = { 'lua', 'vim', 'vimdoc', 'bash', 'javascript' },
+require("nvim-treesitter.install").prefer_git = true
+require("nvim-treesitter.configs").setup({
+	ensure_installed = { "lua", "vim", "vimdoc", "bash", "javascript" },
 	auto_install = true,
 	highlight = { enable = true },
 	indent = { enable = true },

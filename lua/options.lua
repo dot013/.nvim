@@ -5,13 +5,13 @@ vim.g.maplocalleader = " "
 -- vim.g.loaded_netrwPlugin = 1;
 
 vim.wo.number = true
-vim.o.mouse = true
+vim.o.mouse = 'a'
 
 -- True colors
 vim.o.termguicolors = true
 
 -- Enable filetype plugins
-vim.o.filetype = true
+vim.o.filetype = 'on'
 
 -- Enable spell checking by default
 vim.o.spell = true
@@ -22,7 +22,7 @@ vim.o.relativenumber = true
 vim.o.signcolumn = "number"
 
 -- Set indentation
-vim.o.noexpandtab = true
+vim.o.expandtab = false
 vim.o.tabstop = 4
 vim.o.softtabstop = 4
 vim.o.shiftwidth = 4

@@ -61,12 +61,20 @@ vim.o.mousemoveevent = true
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 capabilities = require("cmp_nvim_lsp").default_capabilities(capabilities)
 
+local HTML_LIKE = { "astro", "html", "svelte", "templ", "vue" }
 require("mason").setup()
 require("mason-lspconfig").setup_handlers({
 	function(server_name)
 		require("lspconfig")[server_name].setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
+		})
+	end,
+	["emmet_ls"] = function()
+		require("lspconfig").emmet_ls.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			filetypes = { table.unpack(HTML_LIKE) },
 		})
 	end,
 	["lua_ls"] = function()
@@ -84,7 +92,36 @@ require("mason-lspconfig").setup_handlers({
 		require("lspconfig").html.setup({
 			on_attach = on_attach,
 			capabilities = capabilities,
-			filetypes = { "html", "svg", "xml" },
+			filetypes = { table.unpack(HTML_LIKE), "svg", "xml" },
+		})
+	end,
+	["htmx"] = function()
+		require("lspconfig").htmx.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			filetypes = { table.unpack(HTML_LIKE) },
+		})
+	end,
+	["unocss"] = function()
+		require("lspconfig").unocss.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			filetypes = { table.unpack(HTML_LIKE) },
+		})
+	end,
+	["templ"] = function()
+		vim.filetype.add({ extension = { templ = "templ" } })
+		require("lspconfig").templ.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			filetypes = { "templ" },
+		})
+	end,
+	["gopls"] = function()
+		require("lspconfig").gopls.setup({
+			on_attach = on_attach,
+			capabilities = capabilities,
+			filetypes = { "templ", "go", "gomod", "gowork", "gotmpl" },
 		})
 	end,
 })
